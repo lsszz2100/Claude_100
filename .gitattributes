@@ -3,3 +3,4 @@
 *.json text eol=lf
 *.txt text eol=lf
 *.png binary
+LICENSE text eol=lf
