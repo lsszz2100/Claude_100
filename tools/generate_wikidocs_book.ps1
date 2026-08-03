@@ -218,7 +218,7 @@ $tocLines.Add("  - [999. 마무리](pages/999-closing.md)")
 Write-Utf8NoBom "TOC.md" ($tocLines -join "`r`n")
 
 $preface = @"
-# 000. 들어가며
+## 000. 들어가며
 
 저자: $author
 
@@ -226,7 +226,7 @@ $preface = @"
 
 2026년 05월 03일 기준으로 Claude 생태계는 웹 대화, 데스크톱 앱, 터미널 기반 Claude Code, IDE 통합, MCP, Skills, Hooks, Subagents, Agent Teams, Agent SDK까지 확장되어 있습니다. 이 책은 그 요소들을 흩어진 기능으로 설명하지 않고 하나의 실전 흐름으로 묶습니다.
 
-## 이 책의 독자
+### 이 책의 독자
 
 - Claude를 처음 쓰는 사람
 - Claude Code로 개발 생산성을 높이고 싶은 사람
@@ -234,11 +234,11 @@ $preface = @"
 - 팀에 AI 개발 워크플로를 도입하려는 사람
 - 프로덕션 AI 애플리케이션의 평가, 보안, 배포, 운영을 고민하는 사람
 
-## 읽는 방법
+### 읽는 방법
 
 초급자는 001번부터 순서대로 읽으세요. 개발 경험이 있다면 031번부터 시작해도 됩니다. Claude Code를 이미 사용 중이라면 066번 Skills, 075번 Hooks, 083번 MCP, 092번 Subagents부터 읽고 필요한 부분으로 돌아오면 됩니다.
 
-## 중요한 원칙
+### 중요한 원칙
 
 Claude와 Claude Code는 강력하지만 검증을 대체하지 않습니다. 이 책은 빠른 자동화보다 재현 가능한 결과, 작은 범위의 안전한 변경, 테스트 가능한 구현, 보안 검토, 운영 가능한 구조를 우선합니다.
 "@
@@ -251,17 +251,17 @@ foreach ($partName in $partNames) {
   $partFile = "pages/{0:000}-part.md" -f $first.N
   $items = ($partGroup | ForEach-Object { "- {0:000}. {1}: {2}" -f $_.N, $_.Title, $_.Focus }) -join "`r`n"
 $content = @"
-# $partName
+## $partName
 
 저자: $author
 
 이 장은 $($first.Level) 단계 독자를 위한 흐름입니다. 각 페이지는 하나의 주제를 다루며, 개념 설명과 실습 프롬프트를 함께 제공합니다.
 
-## 이 장에서 다루는 100선 항목
+### 이 장에서 다루는 100선 항목
 
 $items
 
-## 학습 방식
+### 학습 방식
 
 각 항목을 읽은 뒤 바로 Claude 또는 Claude Code에 실습 프롬프트를 입력해 보세요. 읽기만 하면 기능 목록으로 남고, 직접 실행하면 작업 습관으로 바뀝니다.
 "@
@@ -272,27 +272,27 @@ foreach ($t in $topics) {
   $file = "pages/{0:000}-{1}.md" -f $t.N, (New-Slug $t.Title)
   $next = if ($t.N -lt 100) { "{0:000}" -f ($t.N + 1) } else { "101" }
   $content = @"
-# $("{0:000}" -f $t.N). $($t.Title)
+## $("{0:000}" -f $t.N). $($t.Title)
 
 난이도: $($t.Level)  
 기준일: $date
 저자: $author
 
-## 핵심 개념
+### 핵심 개념
 
 $($t.Focus)
 
 Claude를 잘 쓰는 사람은 도구 이름을 많이 아는 사람이 아니라, 현재 작업에 필요한 맥락과 검증 기준을 정확히 주는 사람입니다. 이 주제에서는 기능의 표면적 사용법보다 실제 작업에서 실패를 줄이는 기준을 먼저 잡습니다.
 
-## 왜 중요한가
+### 왜 중요한가
 
 AI 도구는 애매한 요청에도 자신감 있게 답합니다. 따라서 사용자는 목표, 범위, 제약, 완료 기준을 명확히 해야 합니다. Claude Code를 사용할 때는 특히 파일 수정, 명령 실행, 외부 도구 연결이 실제 환경에 영향을 줄 수 있으므로 작은 범위에서 계획하고 검증하는 습관이 중요합니다.
 
-## 실습
+### 실습
 
 $($t.Practice)
 
-## Claude 또는 Claude Code에 입력할 프롬프트
+### Claude 또는 Claude Code에 입력할 프롬프트
 
 ``````text
 나는 "$($t.Title)" 주제를 배우고 있다.
@@ -308,21 +308,21 @@ $($t.Practice)
 4. 흔한 실수와 검증 방법을 체크리스트로 정리해줘.
 ``````
 
-## 체크리스트
+### 체크리스트
 
 - [ ] 이 주제를 한 문장으로 설명할 수 있다.
 - [ ] 이 주제가 필요한 상황과 필요하지 않은 상황을 구분할 수 있다.
 - [ ] Claude에게 줄 요청에 목표, 범위, 제약을 포함할 수 있다.
 - [ ] 결과물을 테스트하거나 검토하는 기준을 정할 수 있다.
 
-## 흔한 실수
+### 흔한 실수
 
 - 결과가 그럴듯하다는 이유로 검증을 생략한다.
 - 전체 프로젝트를 한 번에 바꾸라고 요청한다.
 - 비밀정보, 운영 설정, 민감 파일을 무심코 포함한다.
 - 실패했을 때 원인 분석 없이 같은 요청을 반복한다.
 
-## 다음 단계
+### 다음 단계
 
 다음 항목으로 넘어가기 전에 이 페이지의 프롬프트를 실제 프로젝트나 샘플 폴더에서 한 번 실행해 보세요. 다음 페이지 번호: $next
 "@
@@ -330,7 +330,7 @@ $($t.Practice)
 }
 
 $appendixIntro = @"
-# 부록
+## 부록
 
 저자: $author
 
@@ -341,15 +341,15 @@ Write-Utf8NoBom "pages/101-appendix.md" $appendixIntro
 foreach ($a in $appendices) {
   $file = "pages/{0:000}-{1}.md" -f $a.N, (New-Slug $a.Title)
 $content = @"
-# $("{0:000}" -f $a.N). $($a.Title)
+## $("{0:000}" -f $a.N). $($a.Title)
 
 저자: $author
 
-## 목적
+### 목적
 
 $($a.Focus)
 
-## 바로 쓰는 템플릿
+### 바로 쓰는 템플릿
 
 ``````text
 상황:
@@ -365,14 +365,14 @@ $($a.Focus)
 검증 방법:
 ``````
 
-## 적용 체크리스트
+### 적용 체크리스트
 
 - [ ] 이 항목을 현재 프로젝트에 적용할 이유가 명확하다.
 - [ ] 보안 또는 권한 문제가 있는지 확인했다.
 - [ ] 팀원이 읽어도 이해할 수 있게 문서화했다.
 - [ ] 실패했을 때 되돌릴 방법을 준비했다.
 
-## 메모
+### 메모
 
 이 부록은 책의 본문을 실제 환경에 옮기는 데 쓰는 실무 도구입니다. 프로젝트마다 명령어와 정책이 다르므로 그대로 복사하기보다 현재 저장소의 구조에 맞게 조정하세요.
 "@
@@ -380,14 +380,14 @@ $($a.Focus)
 }
 
 $imgLines = New-Object System.Collections.Generic.List[string]
-$imgLines.Add("# 900. 이미지 생성 계획")
+$imgLines.Add("## 900. 이미지 생성 계획")
 $imgLines.Add("")
 $imgLines.Add("저자: $author")
 $imgLines.Add("")
 $imgLines.Add('이 페이지는 GPT image 2.0으로 생성할 학습용 이미지 목록입니다. 생성된 이미지는 `assets/` 폴더에 저장하고 각 장의 본문에서 상대 경로로 참조합니다.')
 $imgLines.Add("")
 foreach ($img in $imagePrompts) {
-  $imgLines.Add("## $($img.Title)")
+  $imgLines.Add("### $($img.Title)")
   $imgLines.Add("")
   $imgLines.Add(('- 파일명: `assets/{0}`' -f $img.File))
   $imgLines.Add(('- 삽입 예시: `![{0}](../assets/{1})`' -f $img.Title, $img.File))
@@ -400,7 +400,7 @@ foreach ($img in $imagePrompts) {
 Write-Utf8NoBom "pages/900-image-generation-plan.md" ($imgLines -join "`r`n")
 
 $closing = @"
-# 999. 마무리
+## 999. 마무리
 
 저자: $author
 

@@ -146,14 +146,14 @@ foreach ($file in $markdownFiles) {
     }
   }
 
-  if ($relativeFile -match '(^|[\\/])[0-9]{3}-part\.md$' -and $text -match '(?m)^# Part [1-9]\.') {
+  if ($relativeFile -match '(^|[\\/])[0-9]{3}-part\.md$' -and $text -match '(?m)^## Part [1-9]\.') {
     $errors.Add("Unpadded part number in ${relativeFile}: use Part 01 through Part 09")
   }
 
   if ($relativeFile -match '^pages\\([0-9]{3})-' -or $relativeFile -match '^pages/([0-9]{3})-') {
     $fileNumber = $Matches[1]
     $firstLine = ($text -split "(`r`n|`n|`r)", 2)[0]
-    if ($fileNumber -notin @("900", "999") -and $firstLine -notmatch "^# $fileNumber(\.| |-)") {
+    if ($fileNumber -notin @("900", "999") -and $firstLine -notmatch "^## $fileNumber(\.| |-)") {
       if ($relativeFile -notmatch '\\[0-9]{3}-part\.md$' -and $relativeFile -notmatch '/[0-9]{3}-part\.md$' -and $relativeFile -notmatch '101-appendix\.md$') {
         $errors.Add("Page heading number mismatch in ${relativeFile}: expected $fileNumber")
       }

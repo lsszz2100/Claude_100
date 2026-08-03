@@ -1,36 +1,36 @@
-# 006. Claude Web, Desktop, CLI, IDE 차이
+## 006. Claude Web, Desktop, CLI, IDE 차이
 
 난이도: 초급  
 기준일: 2026년 05월 03일
 저자: AI_Innovation_Studio
 
-## 핵심 개념
+### 핵심 개념
 
 Claude는 하나의 방식으로만 쓰는 도구가 아닙니다. 웹, 데스크톱, 터미널 CLI, IDE 통합, 브라우저, 모바일, CI/CD, Slack 같은 다양한 표면에서 사용할 수 있습니다. 초급자는 “어디서 쓰느냐”에 따라 Claude가 할 수 있는 일이 달라진다는 점을 먼저 이해해야 합니다.
 
-## 환경별 특징
+### 환경별 특징
 
-### Claude Web
+#### Claude Web
 
 브라우저에서 대화하는 방식입니다. 학습, 글쓰기, 요약, 기획, 아이디어 정리에 적합합니다. 로컬 파일을 직접 수정하는 개발 작업보다는 생각을 정리하고 초안을 만드는 데 좋습니다.
 
-### Claude Desktop
+#### Claude Desktop
 
 데스크톱 앱에서 Claude Code 세션을 관리하거나 시각적으로 diff를 검토하는 데 유용합니다. 여러 작업을 나란히 보거나 장기 작업을 관리할 때 도움이 됩니다.
 
-### Claude Code CLI
+#### Claude Code CLI
 
 터미널에서 `claude` 명령으로 실행합니다. 실제 프로젝트 폴더에서 파일을 읽고, 수정하고, 명령을 실행합니다. 개발 작업의 중심은 보통 CLI입니다.
 
-### IDE 통합
+#### IDE 통합
 
 VS Code, Cursor, JetBrains IDE에서 Claude Code를 더 편하게 사용할 수 있습니다. 선택한 코드, 열린 파일, diff 검토 흐름과 결합되므로 개발자가 가장 자연스럽게 사용할 수 있습니다.
 
-### Web/Cloud 작업
+#### Web/Cloud 작업
 
 로컬 환경 없이 원격에서 장기 작업을 실행하거나 병렬 작업을 맡기는 데 유용합니다. 다만 로컬 비밀정보나 내부 시스템 접근이 필요한 경우에는 권한과 환경 차이를 고려해야 합니다.
 
-## 선택 기준
+### 선택 기준
 
 | 작업 | 추천 환경 |
 | --- | --- |
@@ -41,7 +41,7 @@ VS Code, Cursor, JetBrains IDE에서 Claude Code를 더 편하게 사용할 수 
 | 반복 업무 자동화 | CLI, Hooks, Routines |
 | PR 리뷰 자동화 | CLI, GitHub 연동, CI/CD |
 
-## 실습
+### 실습
 
 아래 작업을 어떤 환경에서 할지 정해 보세요.
 
@@ -56,7 +56,7 @@ VS Code, Cursor, JetBrains IDE에서 Claude Code를 더 편하게 사용할 수 
 
 정답은 하나가 아닙니다. 중요한 것은 “파일 접근이 필요한가?”, “명령 실행이 필요한가?”, “시각적 검토가 필요한가?”, “장기 작업인가?”를 기준으로 선택하는 것입니다.
 
-## Claude에게 입력할 프롬프트
+### Claude에게 입력할 프롬프트
 
 ```text
 다음 작업을 Claude Web, Desktop, Code CLI, IDE 중 어디서 처리하면 좋을지 판단해줘.
@@ -71,13 +71,13 @@ VS Code, Cursor, JetBrains IDE에서 Claude Code를 더 편하게 사용할 수 
 - 주의할 점
 ```
 
-## 체크리스트
+### 체크리스트
 
 - [ ] Web과 CLI의 차이를 설명할 수 있다.
 - [ ] 파일 수정이 필요한 작업은 Claude Code가 적합함을 이해한다.
 - [ ] Desktop/IDE가 검토 경험을 개선한다는 점을 이해한다.
 - [ ] 원격 작업과 로컬 작업의 권한 차이를 고려할 수 있다.
 
-## 다음 단계
+### 다음 단계
 
 다음 장에서는 2026년 05월 06일 기준 공식 Claude Code 설치법을 정리합니다.

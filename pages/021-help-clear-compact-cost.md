@@ -1,16 +1,16 @@
-# 021. /help, /clear, /compact, /cost
+## 021. /help, /clear, /compact, /cost
 
 난이도: 초급  
 기준일: 2026년 05월 03일
 저자: AI_Innovation_Studio
 
-## 핵심 개념
+### 핵심 개념
 
 Claude Code의 slash command는 대화 중에 Claude Code의 동작을 제어하는 짧은 명령입니다. 그중 `/help`, `/clear`, `/compact`, `/cost`는 초급자가 가장 먼저 익혀야 할 세션 관리 명령입니다.
 
 이 네 가지는 코드를 직접 고치는 명령이 아닙니다. 대신 현재 세션의 사용법, 맥락, 요약, 비용 감각을 관리합니다.
 
-## 네 명령의 역할
+### 네 명령의 역할
 
 | 명령 | 역할 | 주로 쓰는 순간 |
 | --- | --- | --- |
@@ -21,7 +21,7 @@ Claude Code의 slash command는 대화 중에 Claude Code의 동작을 제어하
 
 초급자는 `/clear`와 `/compact`를 구분하는 것이 중요합니다. `/clear`는 새 출발에 가깝고, `/compact`는 이어 달리기에 가깝습니다.
 
-## /help
+### /help
 
 `/help`는 Claude Code 안에서 사용할 수 있는 명령과 기본 사용법을 확인할 때 씁니다.
 
@@ -31,7 +31,7 @@ Claude Code의 slash command는 대화 중에 Claude Code의 동작을 제어하
 
 문서를 검색하기 전에 먼저 `/help`를 입력해도 됩니다. 특히 설치 직후에는 현재 버전에서 지원하는 명령을 확인하는 습관이 좋습니다.
 
-## /clear
+### /clear
 
 `/clear`는 현재 대화 기록을 비웁니다. 이전 작업의 맥락이 다음 작업에 섞이면 Claude가 잘못된 전제를 가져갈 수 있습니다.
 
@@ -43,7 +43,7 @@ Claude Code의 slash command는 대화 중에 Claude Code의 동작을 제어하
 
 단, `/clear`를 하면 이전 대화에서 합의한 조건도 사라집니다. 중요한 결정은 `progress.md`, `README.md`, 이슈, PR 설명처럼 파일이나 외부 기록으로 남긴 뒤 지우세요.
 
-## /compact
+### /compact
 
 `/compact`는 긴 대화를 요약해 이어갈 수 있게 합니다. 같은 작업을 계속 진행하지만 대화가 너무 길어졌을 때 사용합니다.
 
@@ -59,7 +59,7 @@ Claude Code의 slash command는 대화 중에 Claude Code의 동작을 제어하
 
 이렇게 하면 단순한 대화 요약이 아니라 작업 인수인계 문서에 가까운 요약을 만들 수 있습니다.
 
-## /cost
+### /cost
 
 `/cost`는 Claude Code 사용량을 확인할 때 사용합니다.
 
@@ -71,7 +71,7 @@ Claude Code의 slash command는 대화 중에 Claude Code의 동작을 제어하
 
 초급자에게 중요한 습관은 “많이 쓰지 말자”가 아니라 “불필요하게 넓게 읽히지 말자”입니다.
 
-## 실제 작업 흐름
+### 실제 작업 흐름
 
 새 프로젝트를 처음 열었을 때는 다음 순서가 무난합니다.
 
@@ -105,7 +105,7 @@ Claude Code의 slash command는 대화 중에 Claude Code의 동작을 제어하
 /clear
 ```
 
-## 실습
+### 실습
 
 샘플 프로젝트나 빈 폴더에서 다음 순서로 연습해 보세요.
 
@@ -115,7 +115,7 @@ Claude Code의 slash command는 대화 중에 Claude Code의 동작을 제어하
 4. `/compact`에 초점 지시를 붙여 요약을 만든다.
 5. `/clear` 후 새로운 주제의 질문을 던진다.
 
-## Claude Code에 입력할 프롬프트
+### Claude Code에 입력할 프롬프트
 
 ```text
 내가 Claude Code 세션을 오래 쓰고 있다.
@@ -133,7 +133,7 @@ Claude Code의 slash command는 대화 중에 Claude Code의 동작을 제어하
 아직 파일은 수정하지 말고 판단 기준만 알려줘.
 ```
 
-## 체크리스트
+### 체크리스트
 
 - [ ] `/help`로 현재 버전의 명령을 확인할 수 있다.
 - [ ] 작업 주제가 바뀔 때 `/clear`를 사용할 수 있다.
@@ -141,13 +141,13 @@ Claude Code의 slash command는 대화 중에 Claude Code의 동작을 제어하
 - [ ] `/compact`에 요약 초점을 함께 줄 수 있다.
 - [ ] 긴 세션 뒤 `/cost`로 사용량을 확인할 수 있다.
 
-## 흔한 실수
+### 흔한 실수
 
 - `/clear` 전에 중요한 결정 사항을 파일로 남기지 않는다.
 - `/compact`를 아무 지시 없이 반복해서 요약 품질을 떨어뜨린다.
 - 비용 문제를 모델 탓으로만 보고, 너무 넓은 파일 읽기 요청을 그대로 둔다.
 - 새 작업을 시작하면서 이전 버그 조사 맥락을 계속 끌고 간다.
 
-## 다음 단계
+### 다음 단계
 
 다음 장에서는 Claude Code가 프로젝트 파일을 어떻게 읽고, 어떤 순서로 코드베이스를 요약하게 만들면 좋은지 배웁니다.

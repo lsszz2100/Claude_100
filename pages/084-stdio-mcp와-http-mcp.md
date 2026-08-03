@@ -1,16 +1,16 @@
-# 084. stdio MCP와 HTTP MCP
+## 084. stdio MCP와 HTTP MCP
 
 난이도: 고급  
 기준일: 2026년 05월 03일
 저자: AI_Innovation_Studio
 
-## 핵심 개념
+### 핵심 개념
 
 MCP는 클라이언트와 서버가 JSON-RPC 메시지를 주고받는 구조입니다. 공식 MCP 사양은 표준 transport로 stdio와 Streamable HTTP를 정의합니다.
 
 어떤 transport를 쓰느냐에 따라 보안, 배포, 인증, 운영 방식이 달라집니다.
 
-## stdio transport
+### stdio transport
 
 stdio 방식에서는 Claude Code가 MCP 서버를 로컬 subprocess로 실행합니다. 서버는 stdin으로 JSON-RPC 메시지를 받고 stdout으로 응답합니다.
 
@@ -33,7 +33,7 @@ stdio 방식에서는 Claude Code가 MCP 서버를 로컬 subprocess로 실행�
 claude mcp add my-tool --env REQUIRED_KEY_NAME=<set-locally> -- node server.js
 ```
 
-## Streamable HTTP transport
+### Streamable HTTP transport
 
 HTTP 방식은 독립 실행 서버가 HTTP endpoint를 통해 MCP 메시지를 받습니다. 원격 서버, OAuth, 여러 클라이언트 연결, 중앙 운영에 더 적합합니다.
 
@@ -50,7 +50,7 @@ HTTP 방식은 독립 실행 서버가 HTTP endpoint를 통해 MCP 메시지를 
 claude mcp add --transport http notion https://mcp.notion.com/mcp
 ```
 
-## 보안 차이
+### 보안 차이
 
 | 항목 | stdio | HTTP |
 | --- | --- | --- |
@@ -62,7 +62,7 @@ claude mcp add --transport http notion https://mcp.notion.com/mcp
 
 HTTP MCP 서버는 Origin 검증, 인증, localhost bind 같은 보안 조치가 중요합니다.
 
-## 선택 프롬프트
+### 선택 프롬프트
 
 ```text
 이 MCP 서버를 stdio와 HTTP 중 어떤 방식으로 운영해야 하는지 판단해줘.
@@ -76,7 +76,7 @@ HTTP MCP 서버는 Origin 검증, 인증, localhost bind 같은 보안 조치가
 6. 보안 위험
 ```
 
-## 운영 책임 비교
+### 운영 책임 비교
 
 transport 선택은 개발 편의보다 운영 책임을 기준으로 판단해야 합니다.
 
@@ -90,7 +90,7 @@ transport 선택은 개발 편의보다 운영 책임을 기준으로 판단해�
 
 stdio는 작고 빠르게 시작하기 좋지만, 개인 환경에 묶입니다. HTTP는 팀 공용에 적합하지만 서버 보안과 운영 책임이 커집니다.
 
-## transport별 검토 질문
+### transport별 검토 질문
 
 stdio MCP:
 
@@ -120,13 +120,13 @@ HTTP MCP:
 7. token revoke 절차
 ```
 
-## 운영 팁
+### 운영 팁
 
 처음 만드는 사내 도구라면 stdio로 빠르게 검증하고, 여러 사람이 안정적으로 써야 한다면 HTTP 서버로 운영하는 방식을 검토할 수 있습니다. 다만 HTTP로 바꾸면 배포, 인증, 로그, 장애 대응까지 운영 책임이 커집니다.
 
 HTTP 서버를 운영한다면 최소한 health check, rate limit, 인증 실패 로그, 토큰 회수 절차를 문서화하세요. stdio 서버라면 stdout/stderr 규칙과 환경 변수 secret 처리 방식을 테스트해야 합니다.
 
-## 체크리스트
+### 체크리스트
 
 - [ ] stdio는 로컬 도구에 적합하다.
 - [ ] HTTP는 원격/공용 서비스에 적합하다.
@@ -136,6 +136,6 @@ HTTP 서버를 운영한다면 최소한 health check, rate limit, 인증 실패
 - [ ] 운영 책임자와 장애 대응 방식을 정했다.
 - [ ] secret이 stdout이나 서버 로그에 노출되지 않는다.
 
-## 다음 단계
+### 다음 단계
 
 다음 장에서는 GitHub MCP를 사용해 issue, PR, 코드 리뷰 흐름을 연결하는 방법을 다룹니다.

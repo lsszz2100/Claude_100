@@ -1,16 +1,16 @@
-# 092. Subagents 개념
+## 092. Subagents 개념
 
 난이도: 고급  
 기준일: 2026년 05월 03일
 저자: AI_Innovation_Studio
 
-## 핵심 개념
+### 핵심 개념
 
 Subagent는 특정 역할과 도구 권한을 가진 전문 AI 작업자입니다. Claude Code는 작업 설명, subagent의 `description`, 현재 맥락을 바탕으로 적합한 subagent를 자동으로 사용하거나, 사용자가 명시적으로 호출할 수 있습니다.
 
 중요한 장점은 별도 context window입니다. 메인 대화의 맥락을 오염시키지 않고 특정 작업을 맡길 수 있습니다. 반대로 말하면 subagent에게 줄 작업 범위와 산출물 형식을 명확히 써야 합니다.
 
-## 기본 구조
+### 기본 구조
 
 ```text
 .claude/
@@ -34,7 +34,7 @@ Lead with findings ordered by severity.
 Focus on bugs, regressions, security, and missing tests.
 ````
 
-## 언제 쓰는가
+### 언제 쓰는가
 
 Subagent는 작업의 기준이 명확하고, 독립적으로 판단할 수 있는 범위가 있을 때 효과적입니다.
 
@@ -46,7 +46,7 @@ Subagent는 작업의 기준이 명확하고, 독립적으로 판단할 수 있�
 | 권한/인증 검토 | 보안 리뷰어 |
 | 작은 기능 구현 | 구현 에이전트 |
 
-## 역할 분리 원칙
+### 역할 분리 원칙
 
 Subagent를 여러 개 만들 때는 역할 이름보다 책임 경계가 중요합니다.
 
@@ -60,14 +60,14 @@ Subagent를 여러 개 만들 때는 역할 이름보다 책임 경계가 중요
 
 예를 들어 `code-reviewer`와 `security-reviewer`가 모두 “코드 검토”를 한다고 쓰면 역할이 겹칩니다. 전자는 회귀와 테스트 공백을 중심으로 보고, 후자는 공격 시나리오와 권한 우회를 중심으로 보게 나누는 편이 좋습니다.
 
-## 쓰지 않는 편이 좋은 상황
+### 쓰지 않는 편이 좋은 상황
 
 - 요구사항이 아직 모호하다.
 - 바로 다음 행동이 subagent 결과에 막혀 있다.
 - 같은 파일을 여러 subagent가 동시에 수정해야 한다.
 - 운영 배포, DB migration, 인증 정책처럼 단일 책임자의 판단이 필요한 작업이다.
 
-## 좋은 description
+### 좋은 description
 
 `description`은 Claude Code가 언제 이 subagent를 써야 하는지 판단하는 핵심 단서입니다. 막연한 설명보다 사용 조건을 적어야 합니다.
 
@@ -83,7 +83,7 @@ Helps with code.
 Use after code changes to review diffs for correctness bugs, regressions, security risks, and missing tests before merge.
 ```
 
-## 호출 요청 예시
+### 호출 요청 예시
 
 ```text
 코드 리뷰어 subagent를 사용해 현재 변경사항을 검토해줘.
@@ -101,7 +101,7 @@ Use after code changes to review diffs for correctness bugs, regressions, securi
 - 문제가 없으면 명확히 "중요 이슈 없음"이라고 말해줘.
 ```
 
-## 설계 체크리스트
+### 설계 체크리스트
 
 - [ ] 역할이 한 문장으로 분명하다.
 - [ ] 사용할 도구 권한이 최소화되어 있다.
@@ -111,6 +111,6 @@ Use after code changes to review diffs for correctness bugs, regressions, securi
 - [ ] 역할이 다른 subagent와 겹치지 않는다.
 - [ ] 종료 조건과 다음 인계 방식이 정해져 있다.
 
-## 다음 단계
+### 다음 단계
 
 다음 장에서는 가장 자주 쓰이는 코드 리뷰어 에이전트를 설계합니다.
